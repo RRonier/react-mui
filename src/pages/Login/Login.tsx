@@ -1,27 +1,34 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
     Box,
     Button,
+    Checkbox,
+    FormControl,
+    FormControlLabel,
     FormHelperText,
+    Grid,
+    IconButton,
+    InputAdornment,
+    InputLabel,
+    Link,
+    OutlinedInput,
     Stack,
-    Tab,
-    Tabs,
     TextField,
     Typography
 } from '@mui/material';
 
 import styles from "./login.module.css"
+import { VisibilityOutlined, VisibilityOffOutlined } from '@mui/icons-material';
 
 export const LoginPage = () => {
-    // const router = useRouter();
-    // const auth = useAuth();
-    const [method, setMethod] = useState('email');
+    const [showPassword, setShowPassword] = useState(false);
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
+            keepMeSignedIn: false,
             submit: null
         },
         validationSchema: Yup.object({
@@ -47,6 +54,11 @@ export const LoginPage = () => {
             }
         }
     });
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
 
     return (
         <div style={{
@@ -101,7 +113,35 @@ export const LoginPage = () => {
                                     type="email"
                                     value={formik.values.email}
                                 />
-                                <TextField
+                                <FormControl sx={{ m: 1 }} variant="outlined">
+                                    <InputLabel htmlFor="password">Password</InputLabel>
+                                    <OutlinedInput
+                                        id="password"
+                                        name="password"
+                                        type={showPassword ? 'text' : 'password'}
+                                        error={!!(formik.touched.password && formik.errors.password)}
+                                        onBlur={formik.handleBlur}
+                                        onChange={formik.handleChange}
+                                        value={formik.values.password}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                        label="Password"
+                                    />
+                                    {formik.touched.password && formik.errors.password ? <Typography sx={{ ml: 2, fontSize: 12 }} variant="body2" color="red">
+                                        {formik.errors.password}
+                                    </Typography> : null}
+                                </FormControl>
+                                {/* <TextField
                                     error={!!(formik.touched.password && formik.errors.password)}
                                     fullWidth
                                     helperText={formik.touched.password && formik.errors.password}
@@ -109,11 +149,11 @@ export const LoginPage = () => {
                                     name="password"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
-                                    type="password"
                                     value={formik.values.password}
-                                />
+                                    type="password"
+                                /> */}
                             </Stack>
-                            {formik.errors.submit && (
+                            {/* {formik.errors.submit && (
                                 <Typography
                                     color="error"
                                     sx={{ mt: 3 }}
@@ -121,11 +161,36 @@ export const LoginPage = () => {
                                 >
                                     {formik.errors.submit}
                                 </Typography>
-                            )}
+                            )} */}
+                            <Grid item xs={12} sx={{ mt: 1, mb: 1 }}>
+                                <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={formik.values.keepMeSignedIn}
+                                                onChange={formik.handleChange}
+                                                name="checked"
+                                                color="primary"
+                                                size="small"
+                                            />
+                                        }
+                                        label={<Typography variant="body1">Keep me sign in</Typography>}
+                                    />
+                                    {/* <Link variant="h6" to="#" color="text.primary"> */}
+                                    <Link href="#" underline="none" variant="body1">
+                                        Forgot Password?
+                                    </Link>
+                                </Stack>
+                            </Grid>
+                            {/* {formik.errors.submit && (
+                                <Grid item xs={12}>
+                                    <FormHelperText error>{formik.errors.submit}</FormHelperText>
+                                </Grid>
+                            )} */}
                             <Button
                                 fullWidth
                                 size="large"
-                                sx={{ mt: 3, mb: 3 }}
+                                sx={{ mb: 3 }}
                                 type="submit"
                                 variant="contained"
                             >
@@ -133,20 +198,23 @@ export const LoginPage = () => {
                             </Button>
                             <Typography
                                 color="text.secondary"
-                                variant="body2"
+                                variant="body1"
+                                sx={{ textAlign: "center" }}
                             >
                                 New on our platform?
                                 &nbsp;
-                                <a
+                                <Link
+                                    underline="none"
+                                    variant="body1"
                                     href="/auth/register"
                                 >
                                     Create an account
-                                </a>
+                                </Link>
                             </Typography>
                         </form>
                     </div>
                 </Box>
             </Box>
-        </div>
+        </div >
     );
 };

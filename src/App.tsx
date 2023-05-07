@@ -1,9 +1,11 @@
-import { LoginPage } from './pages/Login/Login'
-
+// import { LoginPage } from './pages/Login/Login'
+import { useState } from "react";
+import Drawer from "./Layouts/Drawer/Drawer"
 function App() {
-
+  const [open, setOpen] = useState(true);
   return (
-    <LoginPage />
+    // <LoginPage />
+    <Drawer handleDrawerClose={setOpen} open={open} />
   )
 }
 
