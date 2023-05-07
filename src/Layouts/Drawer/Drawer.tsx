@@ -13,11 +13,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import MenuIcon from '@mui/icons-material/Menu';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 
 //------------------ICONS-------------------------------------------
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
@@ -32,6 +34,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import TableRowsIcon from '@mui/icons-material/TableRows';
 import TableChartIcon from '@mui/icons-material/TableChart';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 import { Avatar, Badge, ListSubheader, Stack } from '@mui/material';
 const upperList = [
@@ -193,7 +196,25 @@ export default function MiniDrawer() {
             AQVA
           </Typography>
         </Toolbar>
-        <Stack direction="row" spacing={2}>
+        <Stack direction="row" spacing={1} sx={{
+          alignItems: "center",
+          mr: 2,
+        }}>
+          <IconButton>
+            <SearchOutlinedIcon />
+          </IconButton>
+          <IconButton>
+            <TranslateOutlinedIcon />
+          </IconButton>
+          {/* <IconButton>
+            <LightModeOutlinedIcon />
+          </IconButton> */}
+          <IconButton>
+            <DarkModeOutlinedIcon />
+          </IconButton>
+          <IconButton>
+            <NotificationsNoneIcon />
+          </IconButton>
           <StyledBadge
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
