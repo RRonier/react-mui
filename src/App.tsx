@@ -1,11 +1,17 @@
 // import { LoginPage } from './pages/Login/Login'
-import { useState } from "react";
-import Drawer from "./Layouts/Drawer/Drawer"
+// import { useState } from "react";
+import Drawer from "./layouts/Drawer/Drawer"
+
 function App() {
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(true);
   return (
-    // <LoginPage />
-    <Drawer handleDrawerClose={setOpen} open={open} />
+    <>
+      {/* <LoginPage /> */}
+      <Drawer
+      // handleDrawerClose={setOpen}
+      // open={open}
+      />
+    </>
   )
 }
 

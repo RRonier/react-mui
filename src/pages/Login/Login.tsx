@@ -141,17 +141,6 @@ export const LoginPage = () => {
                                         {formik.errors.password}
                                     </Typography> : null}
                                 </FormControl>
-                                {/* <TextField
-                                    error={!!(formik.touched.password && formik.errors.password)}
-                                    fullWidth
-                                    helperText={formik.touched.password && formik.errors.password}
-                                    label="Password"
-                                    name="password"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    value={formik.values.password}
-                                    type="password"
-                                /> */}
                             </Stack>
                             {/* {formik.errors.submit && (
                                 <Typography
@@ -169,7 +158,7 @@ export const LoginPage = () => {
                                             <Checkbox
                                                 checked={formik.values.keepMeSignedIn}
                                                 onChange={formik.handleChange}
-                                                name="checked"
+                                                name="keepMeSignedIn"
                                                 color="primary"
                                                 size="small"
                                             />
