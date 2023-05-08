@@ -7,7 +7,6 @@ import {
     Checkbox,
     FormControl,
     FormControlLabel,
-    FormHelperText,
     Grid,
     IconButton,
     InputAdornment,
@@ -21,6 +20,7 @@ import {
 
 import styles from "./login.module.css"
 import { VisibilityOutlined, VisibilityOffOutlined } from '@mui/icons-material';
+import { fakeLoginService } from '../../services/MockServices';
 
 export const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -44,9 +44,8 @@ export const LoginPage = () => {
         }),
         onSubmit: async (values, helpers) => {
             try {
-                // await auth.(values.email, values.password);
-                // router.push('/');
-                console.log(formik.values)
+                fakeLoginService({ email: values.email, password: values.password })
+                console.log(values)
             } catch (err: any) {
                 helpers.setStatus({ success: false });
                 helpers.setErrors({ submit: err.message });

@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "email": "johndoe@gmail.com",
+      "password": "password123"
+    },
+    {
+      "email": "janedoe@gmail.com",
+      "password": "qwerty456"
+    }
+  ],
+  "stocks": [
+    {
+      "currency": "USD",
+      "value": "13.096,370,64",
+      "informationText": "Total Account"
+    },
+    {
+      "currency": "USD",
+      "value": "146.505,91",
+      "informationText": "Yield MTD",
+      "rate": "18.2%"
+    },
+    {
+      "currency": "USD",
+      "value": "146.505,91",
+      "informationText": "Yield YTD",
+      "rate": "18.2%"
+    },
+    {
+      "currency": "USD",
+      "value": "146.505,91",
+      "informationText": "Yield since inception",
+      "rate": "18.2%"
+    }
+  ]
+}

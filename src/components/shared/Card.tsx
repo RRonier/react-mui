@@ -1,59 +1,52 @@
-import PropTypes from 'prop-types';
 import {
-    Avatar,
-    Box,
     Card,
     CardContent,
-    LinearProgress,
     Stack,
     Typography
 } from '@mui/material';
+import { Stocks } from '../../utils/types';
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 
-export const OverviewTasksProgress = (props) => {
-    const { value, sx } = props;
-
+interface CustomCardProps extends Stocks {
+    sx: Object,
+    customKey: number
+}
+export const CustomCard = ({ currency, value, informationText, rate, sx, customKey }: CustomCardProps) => {
     return (
         <Card sx={sx}>
-            <CardContent>
+            <CardContent sx={{
+                margin: "0 !important",
+                py: "0 !important",
+                px: "2 !important"
+            }}>
                 <Stack
                     alignItems="flex-start"
                     direction="row"
-                    justifyContent="space-between"
-                    spacing={3}
+                    width="100%"
+                    // justifyContent="space-between"
+                    spacing={1}
+                    sx={{ minWidth: 200 }}
+                    marginBottom={1}
                 >
-                    <Stack spacing={1}>
-                        <Typography
-                            color="text.secondary"
-                            gutterBottom
-                            variant="overline"
-                        >
-                            Task Progress
-                        </Typography>
-                        <Typography variant="h4">
-                            {value}%
-                        </Typography>
-                    </Stack>
-                    <Avatar
-                        sx={{
-                            backgroundColor: 'warning.main',
-                            height: 56,
-                            width: 56
-                        }}
-                    >
-                    </Avatar>
+                    <Typography fontWeight="bold">{currency}</Typography>
+                    <Typography fontWeight="bold">{value}</Typography>
+                    {rate ? <KeyboardArrowUpOutlinedIcon sx={{
+                        m: "0 !important", p: "0 !important",
+                        width: 20,
+                        height: 18,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
+                        color: customKey > 1 ? "green" : "red",
+                    }} /> : null}
+                    <Typography sx={{
+                        m: "0 !important", p: "0 !important",
+                        width: 20,
+                        color: customKey > 1 ? "green" : "red",
+                    }} fontSize={14}>{rate}</Typography>
                 </Stack>
-                <Box sx={{ mt: 3 }}>
-                    <LinearProgress
-                        value={value}
-                        variant="determinate"
-                    />
-                </Box>
+                <Typography fontSize={14}>{informationText}</Typography>
             </CardContent>
         </Card>
     );
-};
-
-OverviewTasksProgress.propTypes = {
-    value: PropTypes.number.isRequired,
-    sx: PropTypes.object
 };

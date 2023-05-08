@@ -1,5 +1,6 @@
 import { Dashboard } from "../../pages/Dashboard/Dashboard";
 import { LoginPage } from "../../pages/Login/Login"
+import { InformationMain } from "../../pages/Information/Information";
 
 import {
     createBrowserRouter, redirect
@@ -10,8 +11,8 @@ export const Router = createBrowserRouter([
         path: "/",
         element: <LoginPage />,
         loader: () => {
-            if (localStorage.getItem('username')) {
-                throw redirect('/dashboard/welcome')
+            if (localStorage.getItem('user')) {
+                throw redirect('/dashboard')
             }
             return null
         }
@@ -19,8 +20,14 @@ export const Router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <Dashboard />,
+        children: [
+            {
+                path: "/dashboard",
+                element: <InformationMain />,
+            },
+        ],
         loader: () => {
-            if (!localStorage.getItem('username')) {
+            if (!localStorage.getItem('user')) {
                 throw redirect('/')
             }
             return null
