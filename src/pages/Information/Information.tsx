@@ -1,13 +1,17 @@
 import { CustomCard } from "../../components/shared/Card"
 import { useOutletContext } from "react-router-dom"
 import { Stocks } from "../../utils/types"
-import { Box } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { OverviewTraffic } from "../../components/shared/Chart"
+import ReportAreaChart from "../../components/shared/ReportAreaChart"
 
 export const InformationMain = () => {
     const stocks: Stocks[] = useOutletContext()
     return (
-        <Box>
+        <Box sx={{
+            border: "1px dashed blue",
+            width: "100%",
+        }}>
             <Box sx={{
                 margin: 2,
                 display: "flex",
@@ -29,11 +33,31 @@ export const InformationMain = () => {
                 )
                 )}
             </Box>
-            <OverviewTraffic
-                chartSeries={[63, 15, 22]}
-                labels={['Equities', 'Fixed income', 'Edge Funds']}
-                sx={{ height: 'fit-content', width: '30%', border: "1px dashed blue" }}
-            />
+            <Box sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                m: 2,
+            }}>
+                <OverviewTraffic
+                    chartSeries={[63, 15, 22]}
+                    labels={['Equities', 'Fixed income', 'Edge Funds']}
+                    sx={{ height: 'fit-content', width: '30%' }}
+                />
+                <Grid sx={{ p: 2 }}>
+                    <Grid container alignItems="center" justifyContent="space-between">
+                        <Grid item>
+                            <Typography variant="h5">Analytics Report</Typography>
+                        </Grid>
+                    </Grid>
+                    <Box sx={{ mt: 1 }}>
+                        <ReportAreaChart />
+                    </Box>
+                </Grid>
+            </Box>
+            <Box>
+                <Typography fontWeight="bold">Information Box</Typography>
+            </Box>
         </Box>
     )
 }

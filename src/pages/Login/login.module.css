@@ -1,7 +1,6 @@
 .loginBG {
     width: 60%;
     height: 100vh;
-    border: 1px dashed blue;
     background-image: url('../../assets/images/landingBG.jpeg');
     background-repeat: no-repeat;
     background-position: center;

@@ -96,9 +96,6 @@ export const OverviewTraffic = (props) => {
                     series={chartSeries}
                     type="donut"
                     width="100%"
-                    sx={{
-                        border: "1px dashed red"
-                    }}
                 />
                 <Stack
                     alignItems="center"
@@ -129,7 +126,6 @@ export const OverviewTraffic = (props) => {
                                 </Typography>
                                 <Typography
                                     sx={{ mr: 1 }}
-
                                     color="text.secondary"
                                     variant="body1"
                                     fontSize={10}
