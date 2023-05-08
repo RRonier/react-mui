@@ -14,6 +14,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 //------------------ICONS-------------------------------------------
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import PieChartOutlineIcon from '@mui/icons-material/PieChartOutline';
@@ -114,6 +115,28 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
             {theme.direction === 'rtl' ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
           </IconButton>
         </DrawerHeader>
+        <List>
+          <ListItem key="Home" disablePadding sx={{ display: 'block' }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <HomeOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+        </List>
         <Divider />
         <List
           aria-labelledby="nested-list-subheader"

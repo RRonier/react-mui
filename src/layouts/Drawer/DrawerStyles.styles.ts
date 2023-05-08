@@ -5,11 +5,11 @@ export const DrawerPaper = styled(Paper)(({ theme }) => ({
   position: "relative",
   whiteSpace: "nowrap",
   width: 260,
+  backgroundColor: "red",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
-
   "&.MuiDrawer-paperAnchorDockedLeft": {
     width: 260,
     transition: theme.transitions.create("width", {
