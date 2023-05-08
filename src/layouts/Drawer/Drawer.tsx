@@ -27,7 +27,6 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import TableRowsIcon from '@mui/icons-material/TableRows';
 import TableChartIcon from '@mui/icons-material/TableChart';
-import { pink, } from '@mui/material/colors';
 
 import { ListSubheader } from '@mui/material';
 const upperList = [
@@ -104,7 +103,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }) {
+export default function MiniDrawer({ open, handleDrawerClose }) {
   const theme = useTheme();
 
 
@@ -126,7 +125,11 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
             AQVA
           </Typography>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <KeyboardDoubleArrowRightIcon /> : <KeyboardDoubleArrowLeftIcon />}
+            {theme.direction === 'rtl' ? <KeyboardDoubleArrowRightIcon sx={{
+              color: "#ffffff"
+            }} /> : <KeyboardDoubleArrowLeftIcon sx={{
+              color: "#ffffff"
+            }} />}
           </IconButton>
         </DrawerHeader>
         <List>
