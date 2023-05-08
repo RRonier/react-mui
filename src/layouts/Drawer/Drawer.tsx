@@ -27,22 +27,31 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import TableRowsIcon from '@mui/icons-material/TableRows';
 import TableChartIcon from '@mui/icons-material/TableChart';
+import { pink, } from '@mui/material/colors';
 
 import { ListSubheader } from '@mui/material';
 const upperList = [
-  { name: 'Transfers', icon: <SwapHorizIcon /> },
-  { name: 'Activity', icon: <LocalOfferIcon /> },
-  { name: 'Position', icon: <PieChartOutlineIcon /> },
-  { name: 'Yield', icon: <ShowChartIcon /> },
-  { name: 'Subscriptions', icon: <PendingActionsIcon /> },
-  { name: 'Private Equity', icon: <BusinessOutlinedIcon /> }
+  {
+    name: 'Transfers', icon: <SwapHorizIcon sx={{ color: "#ffffff" }} />
+  },
+  {
+    name: 'Activity', icon: <LocalOfferIcon sx={{ color: "#ffffff" }} />
+  },
+  { name: 'Position', icon: <PieChartOutlineIcon sx={{ color: "#ffffff" }} /> },
+  { name: 'Yield', icon: <ShowChartIcon sx={{ color: "#ffffff" }} /> },
+  { name: 'Subscriptions', icon: <PendingActionsIcon sx={{ color: "#ffffff" }} /> },
+  {
+    name: 'Private Equity', icon: <BusinessOutlinedIcon sx={{ color: "#ffffff" }} />
+  }
 ]
 const secondList = [
-  { name: 'Personal Information', icon: <PersonOutlineIcon /> },
-  { name: 'Economic Information', icon: <TableChartIcon /> },
-  { name: 'Household', icon: <TableRowsIcon /> },
-  { name: 'Vehicles', icon: <AccountTreeIcon /> },
-  { name: 'Banc Accounts', icon: <AccountBalanceIcon /> }
+  {
+    name: 'Personal Information', icon: <PersonOutlineIcon sx={{ color: "#ffffff" }} />
+  },
+  { name: 'Economic Information', icon: <TableChartIcon sx={{ color: "#ffffff" }} /> },
+  { name: 'Household', icon: <TableRowsIcon sx={{ color: "#ffffff" }} /> },
+  { name: 'Vehicles', icon: <AccountTreeIcon sx={{ color: "#ffffff" }} /> },
+  { name: 'Banc Accounts', icon: <AccountBalanceIcon sx={{ color: "#ffffff" }} /> }
 ]
 const drawerWidth = 240;
 
@@ -102,7 +111,12 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} PaperProps={{
+        sx: {
+          backgroundColor: "#002984",
+          color: "#ffffff"
+        }
+      }}>
         <DrawerHeader>
           <Typography variant="h6" noWrap component="div" sx={{
             width: '100%',
@@ -131,9 +145,13 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
                   justifyContent: 'center',
                 }}
               >
-                <HomeOutlinedIcon />
+                <HomeOutlinedIcon sx={{
+                  color: "#ffffff"
+                }} />
               </ListItemIcon>
-              <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary="Home" sx={{
+                opacity: open ? 1 : 0,
+              }} />
             </ListItemButton>
           </ListItem>
         </List>
@@ -142,12 +160,15 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
           aria-labelledby="nested-list-subheader"
           component="nav"
           subheader={
-            <ListSubheader sx={{ display: !open && "none" }} component="div" id="nested-list-subheader">
+            <ListSubheader sx={{
+              display: !open && "none", backgroundColor: "#002984",
+              color: "#ffffff"
+            }} component="div" id="nested-list-subheader">
               YOUR ACCOUNT
             </ListSubheader>
           }
         >
-          {upperList.map((element, index) => (
+          {upperList.map((element) => (
             <ListItem key={element.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -175,12 +196,15 @@ export default function MiniDrawer({ open, handleDrawerClose, handleDrawerOpen }
           aria-labelledby="nested-list-subheader"
           component="nav"
           subheader={
-            <ListSubheader sx={{ display: !open && "none" }} component="div">
+            <ListSubheader sx={{
+              display: !open && "none", backgroundColor: "#002984",
+              color: "#ffffff"
+            }} component="div">
               GENERAL INFORMATION
             </ListSubheader>
           }
         >
-          {secondList.map((element, index) => (
+          {secondList.map((element) => (
             <ListItem key={element.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
