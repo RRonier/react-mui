@@ -44,7 +44,7 @@
       "status": "Rejected"
     },
     {
-      "name": "DOcumento de Identidad",
+      "name": "Documento de Identidad",
       "status": "Signed"
     },
     {
@@ -52,8 +52,38 @@
       "status": "Signed"
     },
     {
-      "name": "DOcumento Legal",
+      "name": "Documento Legal",
       "status": "Signed"
+    }
+  ],
+  "activity": [
+    {
+      "name": "Compra",
+      "price": "2000USD",
+      "store": "iShares MSCI Japan ETF",
+      "ammount": "21,537",
+      "elapsedTime": "hace 4 min"
+    },
+    {
+      "name": "Venta",
+      "price": "500USD",
+      "store": "iShares $ Corporate Bond ETF",
+      "ammount": "3567",
+      "elapsedTime": "24 de enero de 2021, 10:15 AM"
+    },
+    {
+      "name": "Venta",
+      "price": "1,175USD",
+      "store": "Primco Income - CI. E (Acc)",
+      "ammount": "15,300",
+      "elapsedTime": "16 de diciembre de 2020, 04:30 AM"
+    },
+    {
+      "name": "Compra",
+      "price": "10,000USD",
+      "store": "Petroleo Brasilero SA",
+      "ammount": "12,300",
+      "elapsedTime": "2 de noviembre de 2021, 02:15 AM"
     }
   ]
 }

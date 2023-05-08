@@ -148,7 +148,7 @@ export const EnhancedTable = ({ documents }: Props) => {
             <Paper sx={{ width: '100%', mb: 2 }}>
                 <TableContainer>
                     <Table
-                        sx={{ minWidth: 750 }}
+                        sx={{ minWidth: 650 }}
                         aria-labelledby="tableTitle"
                         size={dense ? 'small' : 'medium'}
                     >

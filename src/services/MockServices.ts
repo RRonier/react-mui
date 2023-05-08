@@ -27,3 +27,9 @@ export const fakeDocumentsService = async () => {
   let documents = await data.json();
   return documents;
 };
+
+export const fakeActivityService = async () => {
+  let data = await fetch(`${baseURL}/activity`);
+  let activities = await data.json();
+  return activities;
+};

@@ -9,3 +9,13 @@ export interface DocumentsData {
   name: string;
   status: "signed" | "rejected" | "pending";
 }
+
+export interface ActivityCardProps {
+  sx: Object;
+  name: string;
+  price: string;
+  store: string;
+  ammount: string;
+  elapsedTime: string;
+  customKey?: number;
+}

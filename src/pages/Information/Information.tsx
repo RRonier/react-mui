@@ -1,13 +1,16 @@
 import { CustomCard } from "../../components/shared/Card"
 import { OutletProps, useOutletContext } from "react-router-dom"
-import { Stocks } from "../../utils/types"
+import { ActivityCardProps, Stocks } from "../../utils/types"
 import { Box, Grid, Typography } from "@mui/material"
 import { OverviewTraffic } from "../../components/ui/Chart"
 import ReportAreaChart from "../../components/ui/ReportAreaChart"
 import { EnhancedTable } from "../../components/ui/Table"
+import { ActivityCard } from "../../components/shared/ActivityCard"
 
 export const InformationMain = () => {
     const context: OutletProps = useOutletContext()
+    console.log("Information")
+    console.log(context)
     return (
         <Box sx={{
             width: "100%",
@@ -55,13 +58,40 @@ export const InformationMain = () => {
                     </Box>
                 </Grid>
             </Box>
-            <Box sx={{
-                m: 2
+            <Grid container sx={{
+                display: "flex",
+                flexDirection: "row",
             }}>
-                <Typography fontWeight="bold" fontSize={20} sx={{ mb: 1 }}>Information Box</Typography>
-                <Typography variant="body1" fontSize={14} sx={{ mb: 2 }}>Detailed list of document status</Typography>
-                {context && context[1]?.length && <EnhancedTable documents={context[1]} />}
-            </Box>
+                <Box sx={{
+                    m: 2
+                }}>
+                    <Typography fontWeight="bold" fontSize={20} sx={{ mb: 1 }}>Information Box</Typography>
+                    <Typography variant="body1" fontSize={14} sx={{ mb: 2 }}>Detailed list of document status</Typography>
+                    {context && context[1]?.length && <EnhancedTable documents={context[1]} />}
+                </Box>
+                <Box sx={{
+                    m: 2
+                }}>
+                    <Typography fontWeight="bold" fontSize={20} sx={{ mb: 1 }}>Recent Activity</Typography>
+                    <Typography variant="body1" fontSize={14} sx={{ mb: 2 }}>Detailed list of document status</Typography>
+                    <Box sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                    }}>
+                        {context && context[2].length && context[2].map((activity: ActivityCardProps, i) =>
+                            <ActivityCard
+                                key={i}
+                                customKey={i}
+                                name={activity.name}
+                                price={activity.price}
+                                store={activity.store}
+                                ammount={activity.ammount}
+                                elapsedTime={activity.elapsedTime}
+                                sx={{ width: "100%", minWidth: 410, borderRadius: 3, mb: 3 }}
+                            />)}
+                    </Box>
+                </Box>
+            </Grid>
         </Box>
     )
 }
