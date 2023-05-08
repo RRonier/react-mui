@@ -21,3 +21,9 @@ export const fakeStocksService = async () => {
   let stocks = await data.json();
   return stocks;
 };
+
+export const fakeDocumentsService = async () => {
+  let data = await fetch(`${baseURL}/documents`);
+  let documents = await data.json();
+  return documents;
+};

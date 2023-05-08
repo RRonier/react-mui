@@ -33,5 +33,27 @@
       "informationText": "Yield since inception",
       "rate": "18.2%"
     }
+  ],
+  "documents": [
+    {
+      "name": "Certificado de Domicilio",
+      "status": "Pending"
+    },
+    {
+      "name": "Acta de Matrimonio",
+      "status": "Rejected"
+    },
+    {
+      "name": "DOcumento de Identidad",
+      "status": "Signed"
+    },
+    {
+      "name": "Documento Fiscal",
+      "status": "Signed"
+    },
+    {
+      "name": "DOcumento Legal",
+      "status": "Signed"
+    }
   ]
 }

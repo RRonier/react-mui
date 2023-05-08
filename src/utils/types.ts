@@ -4,3 +4,8 @@ export interface Stocks {
   informationText?: string;
   rate?: string;
 }
+
+export interface DocumentsData {
+  name: string;
+  status: "signed" | "rejected" | "pending";
+}

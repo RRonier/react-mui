@@ -1,15 +1,15 @@
 import { CustomCard } from "../../components/shared/Card"
-import { useOutletContext } from "react-router-dom"
+import { OutletProps, useOutletContext } from "react-router-dom"
 import { Stocks } from "../../utils/types"
 import { Box, Grid, Typography } from "@mui/material"
-import { OverviewTraffic } from "../../components/shared/Chart"
-import ReportAreaChart from "../../components/shared/ReportAreaChart"
+import { OverviewTraffic } from "../../components/ui/Chart"
+import ReportAreaChart from "../../components/ui/ReportAreaChart"
+import { EnhancedTable } from "../../components/ui/Table"
 
 export const InformationMain = () => {
-    const stocks: Stocks[] = useOutletContext()
+    const context: OutletProps = useOutletContext()
     return (
         <Box sx={{
-            border: "1px dashed blue",
             width: "100%",
         }}>
             <Box sx={{
@@ -17,7 +17,7 @@ export const InformationMain = () => {
                 display: "flex",
                 gap: 2,
             }}>
-                {stocks && stocks.length && stocks.map((stock: Stocks, i: number) => (
+                {context && context[0]?.length && context[0]?.map((stock: Stocks, i: number) => (
                     <CustomCard
                         sx={{
                             width: "100%",
@@ -55,8 +55,12 @@ export const InformationMain = () => {
                     </Box>
                 </Grid>
             </Box>
-            <Box>
-                <Typography fontWeight="bold">Information Box</Typography>
+            <Box sx={{
+                m: 2
+            }}>
+                <Typography fontWeight="bold" fontSize={20} sx={{ mb: 1 }}>Information Box</Typography>
+                <Typography variant="body1" fontSize={14} sx={{ mb: 2 }}>Detailed list of document status</Typography>
+                {context && context[1]?.length && <EnhancedTable documents={context[1]} />}
             </Box>
         </Box>
     )
