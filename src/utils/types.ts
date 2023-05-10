@@ -19,3 +19,10 @@ export interface ActivityCardProps {
   elapsedTime: string;
   customKey?: number;
 }
+
+export type NavbarColor =
+  | "inherit"
+  | "primary"
+  | "secondary"
+  | "default"
+  | "transparent";

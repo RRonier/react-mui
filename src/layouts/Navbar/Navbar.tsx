@@ -7,9 +7,16 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Avatar, Badge, IconButton, Stack, Typography, styled } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { NavbarColor } from '../../utils/types';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { CustomMenu } from '../../components/shared/Menu';
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
+    handleDrawerOpen?: () => void;
+    color?: NavbarColor;
 }
 
 const drawerWidth = 240;
@@ -18,6 +25,7 @@ const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
     position: 'relative',
+    width: "100%",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -62,10 +70,22 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
-export const Navbar = ({ open, handleDrawerOpen }) => {
+export const Navbar = ({ open, handleDrawerOpen, color = "inherit" }: AppBarProps) => {
+    let isLoggedIn = localStorage.getItem('user');
+    const [openMenu, setOpenMenu] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
 
+    const handleClose = () => {
+        setOpenMenu(false);
+    };
+    const handleLogout = () => {
+        localStorage.clear()
+        setAnchorEl(null);
+        navigate('/');
+    }
+    const navigate = useNavigate()
     return (
-        <AppBar position="fixed" open={open} color="inherit"
+        <AppBar position="fixed" open={open} color={color}
             sx={{
                 display: "flex",
                 flexDirection: "row",
@@ -73,7 +93,7 @@ export const Navbar = ({ open, handleDrawerOpen }) => {
                 justifyContent: "space-between"
             }}>
             <Toolbar>
-                <IconButton
+                {localStorage.getItem("user") && <IconButton
                     color="inherit"
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
@@ -84,7 +104,7 @@ export const Navbar = ({ open, handleDrawerOpen }) => {
                     }}
                 >
                     <MenuIcon />
-                </IconButton>
+                </IconButton>}
                 <Typography variant="h6" noWrap component="div"
                     sx={{
                         width: '100%',
@@ -109,16 +129,33 @@ export const Navbar = ({ open, handleDrawerOpen }) => {
                 <IconButton>
                     <DarkModeOutlinedIcon />
                 </IconButton>
-                <IconButton>
+                {isLoggedIn && <IconButton>
                     <NotificationsNoneIcon />
-                </IconButton>
-                <StyledBadge
+                </IconButton>}
+                {isLoggedIn ? <StyledBadge
                     overlap="circular"
                     anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
                     variant="dot"
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                        setAnchorEl(event.currentTarget)
+                        setOpenMenu(true)
+                    }}
                 >
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                </StyledBadge>
+                    <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/1.jpg"
+                    />
+                </StyledBadge> :
+                    <IconButton onClick={() => navigate("/login")}>
+                        <AccountCircleOutlinedIcon />
+                    </IconButton>
+                }
+                <CustomMenu
+                    open={openMenu}
+                    anchorEl={anchorEl}
+                    handleClose={handleClose}
+                    logout={handleLogout}
+                />
             </Stack>
         </AppBar>
     )

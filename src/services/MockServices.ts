@@ -3,6 +3,7 @@ interface User {
   email: string;
   password: string;
 }
+
 export const fakeLoginService = async ({ email, password }: User) => {
   let response = await fetch(`${baseURL}/users`);
   let users = await response.json();

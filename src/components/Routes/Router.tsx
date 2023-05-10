@@ -5,10 +5,11 @@ import { InformationMain } from "../../pages/Information/Information";
 import {
     createBrowserRouter, redirect
 } from "react-router-dom";
+import { LandingPage } from "../../pages/Landing/LandingPage";
 
 export const Router = createBrowserRouter([
     {
-        path: "/",
+        path: "/login",
         element: <LoginPage />,
         loader: () => {
             if (localStorage.getItem('user')) {
@@ -32,5 +33,8 @@ export const Router = createBrowserRouter([
             }
             return null
         }
-    },
+    }, {
+        path: "/",
+        element: <LandingPage />,
+    }
 ]);

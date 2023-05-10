@@ -21,9 +21,11 @@ import {
 import styles from "./login.module.css"
 import { VisibilityOutlined, VisibilityOffOutlined } from '@mui/icons-material';
 import { fakeLoginService } from '../../services/MockServices';
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate()
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -44,8 +46,8 @@ export const LoginPage = () => {
         }),
         onSubmit: async (values, helpers) => {
             try {
-                fakeLoginService({ email: values.email, password: values.password })
-                console.log(values)
+                await fakeLoginService({ email: values.email, password: values.password })
+                navigate("/dashboard", { replace: true, relative: "route" })
             } catch (err: any) {
                 helpers.setStatus({ success: false });
                 helpers.setErrors({ submit: err.message });
