@@ -8,18 +8,25 @@ import {
     mainDescriptiveText,
     mainDescriptiveBox,
     gridTextContainer,
-    footerContainer
+    footerContainer,
+    footerItem
 } from "./muiStyles"
 
 export const LandingPage = () => {
     return (
-        <Grid container>
-            <Grid sx={landingBGImage}>
+        <Grid container sx={{ position: "relative", height: "120vh", display: "flex" }}>
+            <Grid
+                sx={landingBGImage}
+            >
                 <Navbar />
-                <Grid container sx={titleContainer}>
+                <Grid container
+                    sx={titleContainer}
+                >
                     <Typography sx={title}>Company Landing Page</Typography>
                     <Typography sx={mainSubtitle}>Login to get acces to our company dashboard</Typography>
-                    <Box sx={gridTextContainer}>
+                    <Box
+                        sx={gridTextContainer}
+                    >
                         <Box sx={mainDescriptiveBox}>
                             <Typography variant="h2" color="rgb(26, 115, 232)">300+</Typography>
                             <Typography variant="body1">Data Explanatory Charts</Typography>
@@ -38,21 +45,25 @@ export const LandingPage = () => {
                     </Box>
                 </Grid>
             </Grid>
-            <Grid container sx={footerContainer}>
-                <Grid item sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    alignItems: "center",
-                    width: "100%"
-                }}>
-                    <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer", width: "fit-content" }}>About Us</Typography>
-                    <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer", width: "fit-content" }}>Terms & Conditions</Typography>
-                    <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer" }}>Contact Us</Typography>
-                    <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer" }}>Privacy Policy</Typography>
+            <footer style={{
+                alignSelf: "flex-end",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 2,
+            }}>
+                <Grid container sx={footerContainer}>
+                    <Grid item sx={footerItem}>
+                        <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer", width: "fit-content" }}>About Us</Typography>
+                        <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer", width: "fit-content" }}>Terms & Conditions</Typography>
+                        <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer" }}>Contact Us</Typography>
+                        <Typography color="rgb(26, 115, 232)" sx={{ cursor: "pointer" }}>Privacy Policy</Typography>
+                    </Grid>
                 </Grid>
                 <Typography variant="subtitle2">All rights reserved. For illustrative purposes only.</Typography>
-            </Grid>
+            </footer>
         </Grid>
     )
 }

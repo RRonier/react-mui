@@ -132,20 +132,23 @@ export const Navbar = ({ open, handleDrawerOpen, color = "inherit" }: AppBarProp
                 {isLoggedIn && <IconButton>
                     <NotificationsNoneIcon />
                 </IconButton>}
-                {isLoggedIn ? <StyledBadge
-                    overlap="circular"
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                    variant="dot"
-                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                        setAnchorEl(event.currentTarget)
-                        setOpenMenu(true)
-                    }}
-                >
-                    <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/1.jpg"
-                    />
-                </StyledBadge> :
+                {isLoggedIn ?
+                    <IconButton>
+                        <StyledBadge
+                            overlap="circular"
+                            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                            variant="dot"
+                            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                                setAnchorEl(event.currentTarget)
+                                setOpenMenu(true)
+                            }}
+                        >
+                            <Avatar
+                                alt="Remy Sharp"
+                                src="/static/images/avatar/1.jpg"
+                            />
+                        </StyledBadge>
+                    </IconButton> :
                     <IconButton onClick={() => navigate("/login")}>
                         <AccountCircleOutlinedIcon />
                     </IconButton>
